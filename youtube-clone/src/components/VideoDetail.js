@@ -5,3 +5,4 @@ const VideoDetail = () => {
 };
 
 export default VideoDetail;
+c;
