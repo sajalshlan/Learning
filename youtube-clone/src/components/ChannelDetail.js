@@ -18,7 +18,7 @@ const ChannelDetail = () => {
     );
   }, [id]);
 
-  return <div>ChannelDetail</div>;
+  return <div>ChannelDetaixxl</div>;
 };
 
 export default ChannelDetail;
