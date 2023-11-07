@@ -2,9 +2,12 @@ import React from "react";
 import { genres } from "../assets/constants";
 import { Error, Loader, SongCard } from "../components";
 import { useGetTopChartsQuery } from "../redux/services/shazamAPI";
+import { useDispatch, useSelector } from "react-redux";
 
 const Discover = () => {
   // console.log("hello");
+  const dispatch = useDispatch();
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   const { data, isFetching, error } = useGetTopChartsQuery();
   if (isFetching) return <Loader title="loading..." />;
@@ -35,7 +38,13 @@ const Discover = () => {
       {/* div for the songs to display */}
       <div className="flex sm:justidy-start justify-centre flex-wrap gap-8">
         {data.chart_items?.map((item, i) => (
-          <SongCard key={item.item.id} item={item.item} i={i} />
+          <SongCard
+            key={item.item.id}
+            item={item.item}
+            i={i}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+          />
         ))}
       </div>
     </div>

@@ -1,7 +1,7 @@
 import PlayPause from "./PlayPause";
 import { Link } from "react-router-dom";
 
-const SongCard = ({ item }) => {
+const SongCard = ({ item, isPlaying, activeSong }) => {
   // console.log(item.full_title);
   const activeSong = "test";
 
@@ -15,7 +15,13 @@ const SongCard = ({ item }) => {
               : "hidden"
           }`}
         >
-          <PlayPause />
+          <PlayPause
+            song={item}
+            handlePause={handlePauseClick}
+            handlePlay={handlePlayClick}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+          />
         </div>
         <img alt="song_img" src={item.song_art_image_thumbnail_url} />
       </div>
